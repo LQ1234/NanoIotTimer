@@ -55,12 +55,12 @@ namespace TimerTimeout
 		return(nullptr);
 	}
 
-	TimeoutInterval* setInterval(void (*isr)(TimeoutInterval*),int timeout){
+	TimeoutInterval* setInterval(void (*isr)(TimeoutInterval*),int interval){
 		for(int i=0;i<6;i++){
 			if(timeoutIntervals[i]){
 				if(timeoutIntervals[i]->isr==nullptr){
 					timeoutIntervals[i]->setISR(isr);
-					timeoutIntervals[i]->start(false, timeout);
+					timeoutIntervals[i]->start(false, interval);
 					return(timeoutIntervals[i]);
 				}
 			}
